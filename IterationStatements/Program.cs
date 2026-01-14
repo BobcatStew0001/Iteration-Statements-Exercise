@@ -85,11 +85,7 @@
                 return false;
             }
         }
-
-
-
-
-
+        
         // Heatin' Up Section:
             // 1. Write a method that checks if an integer (provided by the user) is within the range of -10 to 10.
             //    - Method Signature: bool IsInRange(int number)
@@ -118,10 +114,10 @@
                 Console.WriteLine($"Is 5 a Positive Number?{IsPositive(5)}"); //Expected True 
                 Console.WriteLine($"Is -10 a Positive Number?{IsPositive(-10)}"); //Expected False
                 //Testing CanVote
-              voteAge = Console.WriteLine("Enter your age:");
-              CanVote(voteAge);
-              // PrintNumbers();
-              // PrintEveryThirdNumber();
+                Console.WriteLine($"Are you old enough to vote {CanVote(5)}"); //Expected False
+                Console.WriteLine($"Are you old enough to vote {CanVote(19)}"); //Expected True 
+                // PrintNumbers();
+                // PrintEveryThirdNumber();
             }
 
         
