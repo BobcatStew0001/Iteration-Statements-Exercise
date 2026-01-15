@@ -1,4 +1,7 @@
-﻿namespace IterationStatements
+﻿using System;
+using System.Linq;
+
+namespace IterationStatements
 {
     public class Program
     {
@@ -87,13 +90,29 @@
         }
         
         // Heatin' Up Section:
-            // 1. Write a method that checks if an integer (provided by the user) is within the range of -10 to 10.
-            //    - Method Signature: bool IsInRange(int number)
-            //    - Returns true if the number is within the range, false otherwise.
+        // 1. Write a method that checks if an integer (provided by the user) is within the range of -10 to 10.
+        //    - Method Signature: bool IsInRange(int number)
+        //    - Returns true if the number is within the range, false otherwise.
+        public static bool IsInRange(int number)
+        {
+            if (number >= -10 && number <= 10)
+            {
+                return true;
+            }
+            return false;
+        }
 
-            // 2. Write a method that displays the multiplication table (from 1 to 12) for a given integer.
-            //    - Method Signature: void DisplayMultiplicationTable(int number)
-            //    - Should print each line in the format: "1 * number = result"
+        // 2. Write a method that displays the multiplication table (from 1 to 12) for a given integer.
+        //    - Method Signature: void DisplayMultiplicationTable(int number)
+        //    - Should print each line in the format: "1 * number = result"
+        public static void DisplayMultiplicationTable(int number)
+        {
+            var numbers = Enumerable.Range(1, 12);
+            foreach (var num in numbers)
+            {
+                Console.WriteLine($"{num} * {number} = {num * number}");
+            }
+        }
 
             // In the Main method below, call each of your methods to test them.
             // Use various test cases to ensure they work as expected.
@@ -116,6 +135,17 @@
                 //Testing CanVote
                 Console.WriteLine($"Are you old enough to vote {CanVote(5)}"); //Expected False
                 Console.WriteLine($"Are you old enough to vote {CanVote(19)}"); //Expected True 
+
+                //Testing IsInRange
+                Console.WriteLine("IsInRange Examples:");
+                Console.WriteLine($"Is 5 in range? {IsInRange(5)}"); // Expected: True
+                Console.WriteLine($"Is 11 in range? {IsInRange(11)}"); // Expected: False
+
+                //Testing DisplayMultiplicationTable
+                Console.WriteLine("DisplayMultiplicationTable for 5:");
+                DisplayMultiplicationTable(5); //Should return the multiplication table for 5 * 1-12
+                Console.WriteLine("DisplayMultiplicationTable for 8:");
+                DisplayMultiplicationTable(8); //Should return the multiplication table for 8 * 1-12
                 // PrintNumbers();
                 // PrintEveryThirdNumber();
             }
