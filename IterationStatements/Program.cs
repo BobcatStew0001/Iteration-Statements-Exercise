@@ -78,12 +78,15 @@ namespace IterationStatements
 
        
         }
-
+        //  Zach's Notes: I changed it from a bool to a void and everything worked out. I also removed the int age so it
+        // was callable in the Main. With the int age it threw the error for no argument. 
+        
+        
         // 6. Write a method that reads the age of a candidate and determines if they are eligible to vote.
         //    - Method Signature: bool CanVote(int age)
         //    - Returns true if the candidate can vote, false otherwise.
         //    - Hint: Use `int.Parse()` or the safer `int.TryParse()` for extra practice in handling user input.
-        public static bool CanVote(int age)
+        public static void CanVote()
         {
             Console.WriteLine("Please enter your age");
             var isValid = int.TryParse(Console.ReadLine(), out int userAge);
@@ -96,26 +99,41 @@ namespace IterationStatements
 
             if (userAge >= 18)
             {
-                return true;
+                Console.WriteLine($"Congrats! {userAge} years old is old enough to vote."); 
             }
             else
             {
-                return false;
+                Console.WriteLine($"Unfortunately, {userAge} years old is not old enough to vote.");
             }
             
         }
 
         // Heatin' Up Section:
+        
+        //Zach's Notes: I had trouble with this one as a bool. I was not able to get it to accept the input in the test.
+        
+        
         // 1. Write a method that checks if an integer (provided by the user) is within the range of -10 to 10.
-        //    - Method Signature: bool IsInRange(int number)
+        //    - Method Signature: bool IsInRange(int number)  
         //    - Returns true if the number is within the range, false otherwise.
-        public static bool IsInRange(int number)
+        public static void IsInRange()
         {
-            if (number >= -10 && number <= 10)
+            Console.WriteLine("Please enter a number between -20 and 50");
+            var isRange = int.TryParse(Console.ReadLine(), out int userNum);
+            while (isRange == false)
             {
-                return true;
+                Console.WriteLine("Please enter a number between -20 and 50");
+                isRange = int.TryParse(Console.ReadLine(), out userNum);
             }
-            return false;
+            
+            if ( userNum >= -10 && userNum <= 10)
+            {
+                Console.WriteLine($" {userNum} is within range");
+            }
+            else
+            {
+                Console.WriteLine($"{userNum} is out of range");
+            }
         }
 
         // 2. Write a method that displays the multiplication table (from 1 to 12) for a given integer.
@@ -148,32 +166,25 @@ namespace IterationStatements
                bool results2 = IsEven(10); // Expected true
                Console.WriteLine(results2);
                 //Testing IsPositive 
-                //IsPositive(8); //Expected true 
-                //IsPositive(-10); //Expected false
-                //IsPositive(0); //Expected false
+                bool results3 = IsPositive(10); // Expected true 
+                Console.WriteLine(results3);
+                bool results4 =  IsPositive(-10); //Expected false
+                Console.WriteLine(results4);
+                bool results5 = IsPositive(0);
+                Console.WriteLine(results5); //Expected false
                 //Testing CanVote
+                CanVote(); 
                
 
                 //Testing IsInRange
-                /*Console.WriteLine("Please enter a number to check if it's between -10 and 10:");
-                bool isNumber = int.TryParse(Console.ReadLine(), out int userInput);
-
-                if (isNumber)
-                {
-                    bool inRange = IsInRange(userInput);
-                    Console.WriteLine($"{userInput} is in range: {inRange}");
-                }
-                else
-                {
-                    Console.WriteLine("Invalid input. Please enter an integer.");
-                }
+               IsInRange();
                 
 
                 //Testing DisplayMultiplicationTable
-                Console.WriteLine("DisplayMultiplicationTable for 5:");
-                DisplayMultiplicationTable(5); //Should return the multiplication table for 5 * 1-12
-                Console.WriteLine("DisplayMultiplicationTable for 8:");
-                DisplayMultiplicationTable(8); //Should return the multiplication table for 8 * 1-12
+                //Console.WriteLine("DisplayMultiplicationTable for 5:");
+                //DisplayMultiplicationTable(5); //Should return the multiplication table for 5 * 1-12
+                //Console.WriteLine("DisplayMultiplicationTable for 8:");
+                //DisplayMultiplicationTable(8); //Should return the multiplication table for 8 * 1-12
                 // PrintNumbers();
                 // PrintEveryThirdNumber();*//**/
             }
