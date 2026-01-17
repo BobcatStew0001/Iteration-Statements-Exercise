@@ -20,7 +20,7 @@ namespace IterationStatements
         //    - Method Signature: void PrintEveryThirdNumber()
         public static void PrintEveryThirdNumber()
         {
-            for (int i = 999; i >= 3; i -= 3)
+            for (int i = 3; i <= 999; i += 3)
             {
                 Console.WriteLine(i);
             }
@@ -37,7 +37,8 @@ namespace IterationStatements
             }
             else
             {
-                return false;
+                return false; 
+
             }
         }
 
@@ -52,14 +53,15 @@ namespace IterationStatements
             }
             else
             {
-                return false;
+               return  false;
             }
         }
+    
 
 
 
 
-        // 5. Write a method that checks if a given number is positive or negative.
+    // 5. Write a method that checks if a given number is positive or negative.
         //    - Method Signature: bool IsPositive(int number)
         //    - Returns true if the number is positive, false if negative.
         public static bool IsPositive(int num)
@@ -68,9 +70,13 @@ namespace IterationStatements
             {
                 return true;
             }
-            else ;
+            
+            else
+            {
+                return false;
+            }
 
-            return false;
+       
         }
 
         // 6. Write a method that reads the age of a candidate and determines if they are eligible to vote.
@@ -79,7 +85,16 @@ namespace IterationStatements
         //    - Hint: Use `int.Parse()` or the safer `int.TryParse()` for extra practice in handling user input.
         public static bool CanVote(int age)
         {
-            if (age >= 18)
+            Console.WriteLine("Please enter your age");
+            var isValid = int.TryParse(Console.ReadLine(), out int userAge);
+
+            while (isValid == false)
+            {
+                Console.WriteLine("Please enter your age");
+                isValid = int.TryParse(Console.ReadLine(), out  userAge);
+            }
+
+            if (userAge >= 18)
             {
                 return true;
             }
@@ -87,8 +102,9 @@ namespace IterationStatements
             {
                 return false;
             }
+            
         }
-        
+
         // Heatin' Up Section:
         // 1. Write a method that checks if an integer (provided by the user) is within the range of -10 to 10.
         //    - Method Signature: bool IsInRange(int number)
@@ -122,24 +138,36 @@ namespace IterationStatements
             
             
                 // Testing AreNumbersEqual
-                Console.WriteLine("AreNumbersEqual Examples:");
-                Console.WriteLine($"Are 5 and 5 equal? {AreNumbersEqual(5, 5)}"); // Expected: True
-                Console.WriteLine($"Are 5 and 10 equal? {AreNumbersEqual(5, 10)}"); // Expected: False
+                bool equals = AreNumbersEqual(2,2); //Expected true
+                Console.WriteLine(equals);
+                bool equals2 = AreNumbersEqual(8, 3); //Expected false
+                Console.WriteLine(equals2);
                 //Testing IsEven
-                Console.WriteLine("Is it odd or even");
-                Console.WriteLine($"Is 5 odd or even?{IsEven(5)}"); //Expected False
-                Console.WriteLine($"Is 6 odd or even?{IsEven(6)}"); //Expected True 
-                //Testing Postive or Negative 
-                Console.WriteLine($"Is 5 a Positive Number?{IsPositive(5)}"); //Expected True 
-                Console.WriteLine($"Is -10 a Positive Number?{IsPositive(-10)}"); //Expected False
+               bool results = IsEven(9); //Expected false
+               Console.WriteLine(results);
+               bool results2 = IsEven(10); // Expected true
+               Console.WriteLine(results2);
+                //Testing IsPositive 
+                //IsPositive(8); //Expected true 
+                //IsPositive(-10); //Expected false
+                //IsPositive(0); //Expected false
                 //Testing CanVote
-                Console.WriteLine($"Are you old enough to vote {CanVote(5)}"); //Expected False
-                Console.WriteLine($"Are you old enough to vote {CanVote(19)}"); //Expected True 
+               
 
                 //Testing IsInRange
-                Console.WriteLine("IsInRange Examples:");
-                Console.WriteLine($"Is 5 in range? {IsInRange(5)}"); // Expected: True
-                Console.WriteLine($"Is 11 in range? {IsInRange(11)}"); // Expected: False
+                /*Console.WriteLine("Please enter a number to check if it's between -10 and 10:");
+                bool isNumber = int.TryParse(Console.ReadLine(), out int userInput);
+
+                if (isNumber)
+                {
+                    bool inRange = IsInRange(userInput);
+                    Console.WriteLine($"{userInput} is in range: {inRange}");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. Please enter an integer.");
+                }
+                
 
                 //Testing DisplayMultiplicationTable
                 Console.WriteLine("DisplayMultiplicationTable for 5:");
@@ -147,7 +175,7 @@ namespace IterationStatements
                 Console.WriteLine("DisplayMultiplicationTable for 8:");
                 DisplayMultiplicationTable(8); //Should return the multiplication table for 8 * 1-12
                 // PrintNumbers();
-                // PrintEveryThirdNumber();
+                // PrintEveryThirdNumber();*//**/
             }
 
         
